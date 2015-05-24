@@ -1,59 +1,33 @@
-import java.util.LinkedList;
-import java.util.Stack;
-
 public class Multiplex{
 	
-	LinkedList <String> tail = new LinkedList <String>();
-	Stack <String> pila = new Stack <String>();
+	Fuente [] emisoras;
 
-	//------METODOS TAILS---------------
-	//------METODOS TAILS---------------
+	public Multiplex(int cantidad){
+		emisoras = new Fuente[cantidad];
+		for(int i = 0; i < cantidad; i++){
+			emisoras[i] = new Fuente();
+		}//for
+	}//constructor
 
-	public void encolar(String elemento){ 
-		tail.add(elemento); //metodo que va encolando
-	}//encolar
-
-	public void ls(){
-		//System.out.println(tail);
-		for (String s : tail)	//un FOR para recorrer la lista, NO LA VACIA
-			System.out.println(s);
-	}//imprimir
-
-	public void descolar(){ //remueve elemento, FIFO, el primero
-		if(tail.peek() != null);
-			tail.remove();
-	}//descolar
-
-	public void vaciar(){
-		tail.clear(); //quitar todos los elementos
-	}//vaciar
-
-	//------METODOS TAILS---------------
-	//------METODOS TAILS---------------
-
-	//------METODOS PILAS---------------
-	//------METODOS PILAS---------------
-
-	public void apilar(String elemento){
-		pila.push(elemento);
-	}//apilar
-
-	public void lsPila(){
-		for(String s : pila)
-			System.out.println(s);
-	}//lsPila
-
-	public void desapilar(){
-		if(pila.empty() == false)
-			pila.pop();
-	}//desapilar
-
-	//------METODOS PILAS---------------
-	//------METODOS PILAS---------------
+	//un metodo que recorra emisoras y encole sus posiciones
+	public void nombres(){
+		int indice = 1;
+		for(int i = 0; i < emisoras.length; i++){
+			emisoras[i].encolar(indice +"ra fuente");
+			indice++;
+		}//for
+		//prueba mostrando nombres
+		for(int j = 0; j < emisoras.length; j++){
+			emisoras[j].ls();
+		}
+	}//nombres
 
 	public static void main(String [] args){
-		System.out.println("hola!!");
-		Multiplex m = new Multiplex();
+		System.out.println("hola!! \n");
+		Multiplex m = new Multiplex(5);
+		m.nombres();
 	}//main
+
+	
 
 }//end class
