@@ -11,6 +11,8 @@ public class Fuente{
 		
 	LinkedList <String> tail;
 	Stack <String> pila;// = new Stack <String>();
+	String [] abc = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+	//va del 0 al 26
 
 	public Fuente(){
 		tail = new LinkedList <String>();
@@ -27,10 +29,15 @@ public class Fuente{
 		tail.add(elemento); //metodo que va encolando
 	}//encolar
 
+	public void encolarFuente(int index){
+		String elemento = abc[index];
+		encolar(elemento);
+	}//encolarFuente
+
 	public void ls(){
-		//System.out.println(tail);
-		for (String s : tail)	//un FOR para recorrer la lista, NO LA VACIA
-			System.out.println(s);
+		System.out.println(tail);
+		//for (String s : tail)	//un FOR para recorrer la lista, NO LA VACIA
+		//	System.out.println(s);
 	}//imprimir
 
 	public void descolar(){ //remueve elemento, FIFO, el primero
