@@ -18,9 +18,6 @@ public class Fuente{
 		tail = new LinkedList <String>();
 	}//constructor
 
-	public static void main(String [] args){
-		System.out.println("ya compila \n");
-	}//main
 
 	//------METODOS TAILS---------------
 	//------METODOS TAILS---------------
