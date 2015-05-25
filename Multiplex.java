@@ -6,6 +6,7 @@ public class Multiplex{
     Fuente [] emisoras;
     String [] trama;
     Stack <String[]> pilaTrama = new Stack <String[]>();
+    static int DISPOSITIVOS, TAMTRAMA, BITSTRAMA, TIEMPO, BITSTOTALES, TRAMASSEGUNDO;
 
     public Multiplex(int cantidadFuentes, int tamanioTrama){
         emisoras = new Fuente[cantidadFuentes];
@@ -13,11 +14,39 @@ public class Multiplex{
         for(int i = 0; i < cantidadFuentes; i++){
             emisoras[i] = new Fuente();
         }//for
+        DISPOSITIVOS = cantidadFuentes;
+        TAMTRAMA = tamanioTrama;
+        TIEMPO = 1;
     }//constructor
 
-    public int getTamanioTrama(){
-        return trama.length;
-    }//
+    public void datosDefault(){
+        System.out.println();
+        BITSTRAMA = (8 * TAMTRAMA);
+        TRAMASSEGUNDO = 250;
+        System.out.println("Dispositivos: "+ DISPOSITIVOS);
+        System.out.println("Tramas por segundo: "+ TRAMASSEGUNDO);
+        System.out.println("Tamanio de trama: "+ TAMTRAMA);
+        System.out.println("Bits por trama: "+BITSTRAMA);
+        System.out.println("Tiempo que enviaron: "+ TIEMPO + " segundos");
+        BITSTOTALES = (TRAMASSEGUNDO * BITSTRAMA) * TIEMPO;
+        System.out.println("Total de bits enviados: " + BITSTOTALES + " bps");
+        System.out.println(TRAMASSEGUNDO + " tramas/segundo " + "x " + BITSTRAMA + " bits/trama x "+ TIEMPO + " segundos");
+    }//calcularDatos
+
+    public void calcularDatos(int tseg, int tram, int time){
+        TRAMASSEGUNDO = tseg;
+        TAMTRAMA = tram;
+        TIEMPO = time;
+        BITSTRAMA = (8 * TAMTRAMA);
+        System.out.println("Dispositivos: "+ DISPOSITIVOS);
+        System.out.println("Tramas por segundo: "+ TRAMASSEGUNDO);
+        System.out.println("Tamanio de trama: "+ TAMTRAMA);
+        System.out.println("Bits por trama: "+BITSTRAMA);
+        System.out.println("Tiempo que enviaron: "+ TIEMPO + " segundos");
+        BITSTOTALES = (TRAMASSEGUNDO * BITSTRAMA) * TIEMPO;
+        System.out.println("Total de bits enviados: " + BITSTOTALES + " bps");
+        System.out.println(TRAMASSEGUNDO + " tramas/segundo " + "x " + BITSTRAMA + " bits/trama x "+ TIEMPO + " segundos");
+    }//calcularDatos
 
     //un metodo que recorra emisoras y encole sus posiciones
     public void nombres(){
@@ -42,15 +71,19 @@ public class Multiplex{
         for(int i = 0; i < cantidadDatos; i++){
             emisoras[index].encolarFuente(index);
         }//for
-    }//addData  
+    }//addData 
+
+    public void addCadena(int index, char [] cad){
+        for(char c : cad){
+            emisoras[index].encolar(Character.toString(c));
+        }
+    }//addCadena 
 
     public static void main(String [] args){
         System.out.println("hola!! \n");
-        ////Multiplex m = new Multiplex(5);
+        
         FuenteDatos fd = new FuenteDatos();
         fd.setVisible(true);
-        ////m.nombres();
-        ////ahora encolamos y mostramos desde la interfaz ;)
     }//main
 
     //------METODOS PILAS---------------
